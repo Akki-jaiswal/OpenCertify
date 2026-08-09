@@ -70,6 +70,14 @@ body {
     margin-bottom: 2rem;
 }
 
+.app-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
 .app-header h1 {
     font-size: 3rem;
     font-weight: 700;
