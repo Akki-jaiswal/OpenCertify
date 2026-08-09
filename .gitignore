@@ -1,0 +1,19 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Uploads and temporary files
+uploads/
+debug.log
+cert_*.png
+
+# Mac OS
+.DS_Store

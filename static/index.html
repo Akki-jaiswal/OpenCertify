@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCertify</title>
+    <link rel="stylesheet" href="style.css?v=4">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:ital,wght@1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>OpenCertify</h1>
+            <p>Design, preview, and dispatch beautiful certificates for your events or organization.</p>
+        </header>
+
+        <div class="layout-grid">
+            <!-- Left Column: Controls -->
+            <div class="glass-panel controls-panel">
+                <form id="certForm">
+                    <div class="form-section">
+                        <h2>1. Upload Assets</h2>
+                        <div class="input-group">
+                            <label for="csvFile">Participants CSV (name, email)</label>
+                            <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="templateFile">Certificate Template (PNG/JPG)</label>
+                            <input type="file" id="templateFile" name="templateFile" accept="image/*" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signatureFile">Signature Image (Transparent PNG)</label>
+                            <input type="file" id="signatureFile" name="signatureFile" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form-section config-section">
+                        <h2>2. SMTP Credentials (Required)</h2>
+                        <p class="preview-hint" style="margin-bottom: 15px;">To send emails, provide your Gmail address and a 16-character <a href="https://myaccount.google.com/apppasswords" target="_blank" style="color:var(--primary);">App Password</a>. These are never stored.</p>
+                        <div class="input-group">
+                            <label for="smtpEmail">Gmail Address</label>
+                            <input type="email" id="smtpEmail" name="smtpEmail" placeholder="e.g. you@gmail.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="smtpPassword">App Password</label>
+                            <input type="password" id="smtpPassword" name="smtpPassword" placeholder="16-character app password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-section config-section">
+                        <h2>3. Positioning Sandbox</h2>
+                        
+                        <!-- Name Settings -->
+                        <fieldset>
+                            <legend>Participant Name</legend>
+                            <div class="slider-group">
+                                <label>Horizontal (X)</label>
+                                <input type="range" id="nameX" name="nameX" min="0" max="2000" value="1000">
+                            </div>
+                            <div class="slider-group">
+                                <label>Vertical (Y)</label>
+                                <input type="range" id="nameY" name="nameY" min="0" max="1500" value="700">
+                            </div>
+                            <div class="row">
+                                <div class="input-group sm">
+                                    <label>Font Size</label>
+                                    <input type="number" id="nameFontSize" name="nameFontSize" value="130" min="1">
+                                </div>
+                                <div class="input-group sm">
+                                    <label>Color</label>
+                                    <input type="color" id="nameColor" name="nameColor" value="#282828">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Date Settings -->
+                        <fieldset>
+                            <legend>Date Settings</legend>
+                            <div class="input-group">
+                                <label>Date Text (Leave empty to skip)</label>
+                                <input type="text" id="dateText" name="dateText" placeholder="e.g. 12 July 2026">
+                            </div>
+                            <div class="slider-group">
+                                <label>Horizontal (X)</label>
+                                <input type="range" id="dateX" name="dateX" min="0" max="2000" value="200">
+                            </div>
+                            <div class="slider-group">
+                                <label>Vertical (Y)</label>
+                                <input type="range" id="dateY" name="dateY" min="0" max="1500" value="800">
+                            </div>
+                            <div class="row">
+                                <div class="input-group sm">
+                                    <label>Font Size</label>
+                                    <input type="number" id="dateFontSize" name="dateFontSize" value="24" min="1">
+                                </div>
+                                <div class="input-group sm">
+                                    <label>Color</label>
+                                    <input type="color" id="dateColor" name="dateColor" value="#282828">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Signature Settings -->
+                        <fieldset>
+                            <legend>Signature Settings</legend>
+                            <div class="input-group">
+                                <label>Signature Text (Overrides image if typed)</label>
+                                <input type="text" id="sigText" name="sigText" placeholder="e.g. John Doe">
+                            </div>
+                            <div class="slider-group">
+                                <label>Horizontal (X)</label>
+                                <input type="range" id="sigX" name="sigX" min="0" max="2000" value="800">
+                            </div>
+                            <div class="slider-group">
+                                <label>Vertical (Y)</label>
+                                <input type="range" id="sigY" name="sigY" min="0" max="1500" value="800">
+                            </div>
+                            <div class="row">
+                                <div class="input-group sm">
+                                    <label>Image Scale</label>
+                                    <input type="range" id="sigScale" name="sigScale" min="0.1" max="3" step="0.1" value="1.0">
+                                </div>
+                                <div class="input-group sm">
+                                    <label>Font Size (Text)</label>
+                                    <input type="number" id="sigFontSize" name="sigFontSize" value="40" min="1">
+                                </div>
+                                <div class="input-group sm">
+                                    <label>Color (Text)</label>
+                                    <input type="color" id="sigColor" name="sigColor" value="#282828">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="form-section config-section">
+                        <h2>4. Email Customization</h2>
+                        <p class="preview-hint" style="margin-bottom: 15px;">Use <code>{name}</code> in the subject or body to automatically insert the participant's name.</p>
+                        <div class="input-group">
+                            <label for="emailSubject">Email Subject</label>
+                            <input type="text" id="emailSubject" name="emailSubject" placeholder="e.g. Your Certificate of Participation - {name}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="emailBody">Email Body</label>
+                            <textarea id="emailBody" name="emailBody" rows="6" placeholder="e.g. Hi {name},&#10;&#10;Thank you for participating! Please find your certificate attached.&#10;&#10;Best Regards,&#10;The Team" required style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; padding: 0.75rem 1rem; border-radius: 8px; font-size: 1rem; width: 100%; resize: vertical;"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Generate & Send Emails 🚀</button>
+                </form>
+
+                <div id="progressContainer" class="hidden">
+                    <h3>Terminal Output</h3>
+                    <div id="terminal"></div>
+                </div>
+            </div>
+
+            <!-- Right Column: Sandbox Preview -->
+            <div class="glass-panel preview-panel">
+                <h2>Live Sandbox Preview</h2>
+                <p class="preview-hint">Upload a template to start previewing!</p>
+                <div class="sandbox-container" id="sandboxContainer">
+                    <img id="previewImage" src="" alt="Certificate Template">
+                    <div id="previewName" class="preview-element">Sample Name</div>
+                    <div id="previewDate" class="preview-element hidden">12 July 2026</div>
+                    <img id="previewSignature" class="preview-element hidden" src="" alt="Signature">
+                    <div id="previewSigText" class="preview-element hidden">John Doe</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js?v=2"></script>
+</body>
+</html>
