@@ -63,6 +63,12 @@ def process():
     
     return jsonify({"status": "success", "message": "Processing started..."})
 
+@app.route('/api/stats')
+def api_stats():
+    import stats_manager
+    stats = stats_manager.get_stats()
+    return jsonify(stats)
+
 @app.route('/progress')
 def progress():
     def generate():

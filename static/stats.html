@@ -32,11 +32,27 @@
     <main class="app-container" style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
         <div class="glass-panel" style="text-align: center; max-width: 600px; padding: 4rem 2rem;">
             <h2 style="font-size: 1.5rem; color: #94a3b8; margin-bottom: 1rem;">Community Impact</h2>
-            <h1 style="font-size: 5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(90deg, var(--google-blue), var(--google-red), var(--google-yellow), var(--google-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">3,000+</h1>
+            <h1 id="statsCounter" style="font-size: 5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(90deg, var(--google-blue), var(--google-red), var(--google-yellow), var(--google-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">50+</h1>
             <p style="font-size: 1.25rem; color: #e2e8f0; line-height: 1.6;">
                 Certificates successfully generated and securely dispatched to participants by event organizers worldwide using OpenCertify.
             </p>
         </div>
     </main>
+
+    <script>
+        async function fetchStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                document.getElementById('statsCounter').innerText = data.sent_count.toLocaleString() + '+';
+            } catch (error) {
+                console.error("Error fetching stats:", error);
+            }
+        }
+        
+        // Fetch immediately, then every 3 seconds
+        fetchStats();
+        setInterval(fetchStats, 3000);
+    </script>
 </body>
 </html>

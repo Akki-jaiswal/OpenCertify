@@ -153,6 +153,10 @@ def process_certificates(csv_path, template_path, signature_path, config, progre
 
                 server.send_message(msg)
                 
+                # Increment the global stats counter
+                import stats_manager
+                stats_manager.increment()
+                
                 # Clean up generated file
                 os.remove(cert_filename)
                 
