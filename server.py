@@ -26,6 +26,10 @@ def progress_callback(message):
 def index():
     return send_from_directory('static', 'index.html')
 
+@app.route('/stats.html')
+def stats():
+    return send_from_directory('static', 'stats.html')
+
 @app.route('/process', methods=['POST'])
 def process():
     if 'csvFile' not in request.files or 'templateFile' not in request.files:
