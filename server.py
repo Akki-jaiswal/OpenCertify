@@ -80,7 +80,8 @@ def progress():
             try:
                 # Wait for up to 15 seconds for a message
                 msg = progress_queue.get(timeout=15)
-                yield f"data: {msg}\n\n"
+                formatted_msg = msg.replace('\n', '\ndata: ')
+                yield f"data: {formatted_msg}\n\n"
                 if "✅ Process complete!" in msg or "❌ Error:" in msg:
                     break
             except queue.Empty:
