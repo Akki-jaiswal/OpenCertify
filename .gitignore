@@ -17,3 +17,7 @@ cert_*.png
 
 # Mac OS
 .DS_Store
+
+# Secrets and local files
+firebase_credentials.json
+stats.json
