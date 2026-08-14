@@ -7,12 +7,16 @@ from firebase_admin import db
 if not firebase_admin._apps:
     try:
         # Load from file (local or Render Secret File)
-        cred_path = 'firebase_credentials.json'
-        if os.path.exists(cred_path):
-            cred = credentials.Certificate(cred_path)
+        local_path = 'firebase_credentials.json'
+        render_path = '/etc/secrets/firebase_credentials.json'
+        
+        if os.path.exists(render_path):
+            cred = credentials.Certificate(render_path)
+        elif os.path.exists(local_path):
+            cred = credentials.Certificate(local_path)
         else:
             # Fallback if no file is found (will fail gracefully)
-            print("WARNING: firebase_credentials.json not found!")
+            print("WARNING: firebase_credentials.json not found in local or /etc/secrets!")
             cred = None
 
         if cred:
