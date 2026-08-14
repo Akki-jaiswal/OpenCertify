@@ -46,9 +46,9 @@ def process_certificates(csv_path, template_path, signature_path, config, progre
         sig_y = int(config.get('sigY', 800))
         sig_scale = float(config.get('sigScale', 1.0))
         
-        # Connect to SMTP
-        sender_email = config.get('smtpEmail') or os.getenv('SENDER_EMAIL')
-        sender_password = config.get('smtpPassword') or os.getenv('SENDER_PASSWORD')
+        # Connect to SMTP (Strictly use user-provided credentials for security)
+        sender_email = config.get('smtpEmail')
+        sender_password = config.get('smtpPassword')
         
         if not sender_email or not sender_password:
             return {"status": "error", "message": "SMTP credentials (Email and App Password) are missing!"}
