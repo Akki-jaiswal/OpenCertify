@@ -67,6 +67,18 @@ def process():
     
     return jsonify({"status": "success", "message": "Processing started..."})
 
+@app.route('/api/stats')
+def api_stats():
+    import stats_manager
+    stats = stats_manager.get_stats()
+    return jsonify(stats)
+
+@app.route('/api/increment', methods=['POST'])
+def api_increment():
+    import stats_manager
+    stats_manager.increment()
+    return jsonify({"status": "success"})
+
 
 @app.route('/progress')
 def progress():

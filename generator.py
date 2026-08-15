@@ -156,6 +156,13 @@ def process_certificates(csv_path, template_path, signature_path, config, progre
 
                 server.send_message(msg)
                 
+                # Increment the global stats counter by pinging the central cloud API
+                try:
+                    import requests
+                    requests.post('https://opencertify.onrender.com/api/increment', timeout=5)
+                except Exception:
+                    pass
+                
                 # Clean up generated file
                 os.remove(cert_filename)
                 

@@ -38,5 +38,21 @@
             </p>
         </div>
     </main>
+
+    <script>
+        async function fetchStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                document.getElementById('statsCounter').innerText = data.sent_count.toLocaleString() + '+';
+            } catch (error) {
+                console.error("Error fetching stats:", error);
+            }
+        }
+        
+        // Fetch immediately, then every 3 seconds
+        fetchStats();
+        setInterval(fetchStats, 3000);
+    </script>
 </body>
 </html>
