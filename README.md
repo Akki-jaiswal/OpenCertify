@@ -1,42 +1,89 @@
-# OpenCertify
+<div align="center">
+  <img src="static/logo.jpg" alt="OpenCertify Logo" width="150"/>
+  <h1>🎓 OpenCertify</h1>
+  <p><b>A beautifully designed, open-source certificate generation and dispatch portal.</b></p>
+  <p>
+    <a href="https://github.com/Akki-jaiswal/OpenCertify/stargazers"><img src="https://img.shields.io/github/stars/Akki-jaiswal/OpenCertify?style=flat-square&color=yellow" alt="Stars"></a>
+    <a href="https://github.com/Akki-jaiswal/OpenCertify/network/members"><img src="https://img.shields.io/github/forks/Akki-jaiswal/OpenCertify?style=flat-square&color=blue" alt="Forks"></a>
+    <a href="https://github.com/Akki-jaiswal/OpenCertify/issues"><img src="https://img.shields.io/github/issues/Akki-jaiswal/OpenCertify?style=flat-square&color=red" alt="Issues"></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License"></a>
+  </p>
+</div>
 
-OpenCertify is a robust, highly customizable certificate generation and dispatch portal. Design your certificate template visually via a Sandbox UI, overlay participant names, dates, and signatures, and email them out automatically in bulk!
+<br/>
 
-## Features
-- **Visual Sandbox**: Drag-and-drop or slider-based positioning for text elements.
-- **Auto-Scaling**: Name fonts scale dynamically for long names.
-- **Text & Image Signatures**: Upload a PNG signature or type one out and style it.
-- **Robust CSV Parsing**: Automatically handles different delimiters (commas, semicolons) and encodings to prevent crashes.
-- **Bring Your Own Email (BYOE)**: Input your own SMTP credentials directly on the UI to send emails from your own account securely.
+OpenCertify is an advanced, user-friendly tool built for event organizers, educators, and community leaders. It allows you to visually design certificates, automatically overlay participant names from a CSV, and instantly dispatch hundreds of emails directly from your own Gmail account.
 
-## Local Deployment
+## ✨ Features
 
-1. **Clone the repository**
-2. **Install requirements**: 
+- **🎨 Visual Sandbox:** Drag-and-drop or slider-based positioning for text elements directly on your template.
+- **📱 Glassmorphism UI:** A stunning, modern, and highly responsive user interface.
+- **🚀 Bring Your Own Email (BYOE):** No central server required. Input your own Gmail App Password directly on the UI to securely send emails from your own account.
+- **✍️ Dynamic Signatures:** Upload a PNG signature or type one out and style it digitally.
+- **📊 Live Terminal & Stats:** Watch the real-time progress of your emails being sent via Server-Sent Events (SSE).
+- **🛡️ Secure & Local:** Runs 100% locally on your machine, ensuring complete privacy for your participants' data.
+
+---
+
+## 🚀 Quick Start (Local Setup)
+
+Because modern cloud providers (like Render or Heroku) strictly block outgoing email ports on their free tiers to prevent spam, **OpenCertify is designed to be run locally on your own computer.**
+
+### Prerequisites
+- Python 3.10 or higher
+- Git
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Akki-jaiswal/OpenCertify.git
+   cd OpenCertify
+   ```
+
+2. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
-3. **Run the server**:
+
+3. **Start the server:**
    ```bash
    python server.py
    ```
-4. **Access the portal**: Open `http://localhost:5000` in your web browser.
 
-## Docker Deployment (Render, Heroku, VPS)
+4. **Access the portal:**
+   Open your browser and navigate to `http://localhost:5000`
 
-OpenCertify includes a `Dockerfile` for easy deployment on any PaaS provider like Render, Railway, or Heroku.
+---
 
-1. Create a new Web Service on Render/Railway and connect your GitHub repository.
-2. The platform will automatically detect the `Dockerfile` and build the application.
-3. Once deployed, anyone can access your public URL and use the tool by inputting their own Gmail App Password.
+## 🌐 How to share a "Live URL" with others for free
 
-## Security Note
+If you want to give other organizers a live URL (so they don't have to download Python or run code), you can securely share your local server to the internet for free using **Ngrok**!
 
-If you plan to use this privately and don't want to enter your password every time, you can create a `.env` file in the root directory:
+1. Download [Ngrok](https://ngrok.com/).
+2. Run your local OpenCertify server (`python server.py`).
+3. Open a new terminal and run:
+   ```bash
+   ngrok http 5000
+   ```
+4. Ngrok will give you a live public URL (e.g., `https://1234-abcd.ngrok-free.app`). 
+5. You can share this URL with anyone in the world! As long as your laptop is open and the server is running, they can visit the link, enter their own Gmail App Password, and send certificates through your machine.
 
-```env
-SENDER_EMAIL=your_email@gmail.com
-SENDER_PASSWORD=your_16_char_app_password
-```
+---
 
-**Never commit your `.env` file to a public repository!**
+## 📝 Usage Guide
+
+1. **Prepare your CSV:** Create a CSV file with at least two columns: `Name` and `Email`.
+2. **Prepare your Template:** Ensure you have a blank certificate template (JPG/PNG).
+3. **App Password:** You must use a **Google App Password** (not your regular Gmail password). 
+   - Go to Google Account > Security > 2-Step Verification > App Passwords.
+   - Generate a new password and paste it into OpenCertify.
+4. **Design & Send:** Use the sliders to position the text, and click **Generate & Send Emails**!
+
+## 🤝 Contributing
+
+Contributions are always welcome! Whether it's a bug fix, new feature, or documentation improvement, please feel free to open a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
