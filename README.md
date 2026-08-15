@@ -1,13 +1,7 @@
 <div align="center">
   <img src="static/logo.jpg" alt="OpenCertify Logo" width="150"/>
   <h1>🎓 OpenCertify</h1>
-  <p><b>A beautifully designed, open-source certificate generation and dispatch portal.</b></p>
-  <p>
-    <a href="https://github.com/Akki-jaiswal/OpenCertify/stargazers"><img src="https://img.shields.io/github/stars/Akki-jaiswal/OpenCertify?style=flat-square&color=yellow" alt="Stars"></a>
-    <a href="https://github.com/Akki-jaiswal/OpenCertify/network/members"><img src="https://img.shields.io/github/forks/Akki-jaiswal/OpenCertify?style=flat-square&color=blue" alt="Forks"></a>
-    <a href="https://github.com/Akki-jaiswal/OpenCertify/issues"><img src="https://img.shields.io/github/issues/Akki-jaiswal/OpenCertify?style=flat-square&color=red" alt="Issues"></a>
-    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License"></a>
-  </p>
+  <p><b>A well designed, open-source certificate generation and dispatch portal.</b></p>
 </div>
 
 <br/>
