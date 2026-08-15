@@ -3,5 +3,3 @@ Werkzeug
 Pillow
 python-dotenv
 gunicorn
-requests
-firebase-admin
