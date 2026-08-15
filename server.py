@@ -73,11 +73,7 @@ def api_stats():
     stats = stats_manager.get_stats()
     return jsonify(stats)
 
-@app.route('/api/increment', methods=['POST'])
-def api_increment():
-    import stats_manager
-    stats_manager.increment()
-    return jsonify({"status": "success"})
+
 
 
 @app.route('/progress')
