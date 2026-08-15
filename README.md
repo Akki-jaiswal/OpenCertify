@@ -48,20 +48,7 @@ Because modern cloud providers (like Render or Heroku) strictly block outgoing e
 4. **Access the portal:**
    Open your browser and navigate to `http://localhost:5000`
 
----
 
-## 🌐 How to share a "Live URL" with others for free
-
-If you want to give other organizers a live URL (so they don't have to download Python or run code), you can securely share your local server to the internet for free using **Ngrok**!
-
-1. Download [Ngrok](https://ngrok.com/).
-2. Run your local OpenCertify server (`python server.py`).
-3. Open a new terminal and run:
-   ```bash
-   ngrok http 5000
-   ```
-4. Ngrok will give you a live public URL (e.g., `https://1234-abcd.ngrok-free.app`). 
-5. You can share this URL with anyone in the world! As long as your laptop is open and the server is running, they can visit the link, enter their own Gmail App Password, and send certificates through your machine.
 
 ---
 
