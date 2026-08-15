@@ -54,9 +54,12 @@ def process_certificates(csv_path, template_path, signature_path, config, progre
             return {"status": "error", "message": "SMTP credentials (Email and App Password) are missing!"}
             
         if progress_callback: progress_callback("Connecting to SMTP Server...")
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-        server.starttls()
-        server.login(sender_email, sender_password)
+        try:
+            # Try port 465 with implicit SSL (sometimes bypasses cloud firewalls that block 587)
+            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            server.login(sender_email, sender_password)
+        except Exception as e:
+            raise e
         
         # Process CSV robustly
         def get_rows():
